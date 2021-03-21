@@ -1,10 +1,13 @@
+const HtmlWebpackPlugin = require("html-webpack-plugin")
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+
 const path = require('path');
 module.exports = {
       entry: "./src/index.js",
       output: {
         path: __dirname + "/public",
         publicPath: "/",
-        filename: "bundle.js",
+        filename: "[name].bundle.js",
       },
       resolve: {
         extensions: [".jsx", ".js", "json"],
@@ -20,6 +23,16 @@ module.exports = {
               presets: [require.resolve("@babel/preset-react")],
             },
           },
+          {
+            test: /\.css$/,
+            use: [MiniCssExtractPlugin.loader, "css-loader"],
+          },
         ],
       },
+      plugins: [
+        new HtmlWebpackPlugin({
+          template: "./public/index.html",
+        }),
+        new MiniCssExtractPlugin()
+      ]
 }

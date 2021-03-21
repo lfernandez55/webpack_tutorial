@@ -27,6 +27,23 @@ you have:
         "webpack": "^5.27.1"
     }
 
+In https://thedeployguy.com/2020-06-14-adding-typescript-to-web/ the author says to add:
+
+    "start": "webpack-dev-server --open",
+
+to package.json. Instead, add:
+
+    "start": "webpack serve"
+
+In https://thedeployguy.com/2020-06-14-adding-typescript-to-web/ I also had to add another plugin:
+
+      plugins: [
+        new HtmlWebpackPlugin({
+          template: "./public/index.html",
+        }),
+        new MiniCssExtractPlugin()
+      ]
+
 ## To run:
 
 To run this type:
@@ -40,3 +57,4 @@ then:
 then go to:
 
     localhost:5000
+
