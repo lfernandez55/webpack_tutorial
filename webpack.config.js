@@ -7,6 +7,7 @@ const path = require('path');
 module.exports = env => ({
       mode: env.development ? "development" : "production",
       entry: "./src/index.js",
+      watch: true,
       output: {
         path: __dirname + "/public",
         publicPath: "/",
@@ -40,9 +41,9 @@ module.exports = env => ({
         ],
       },
       plugins: [
-        new HtmlWebpackPlugin({
-          template: "./public/index.html",
-        }),
+        // new HtmlWebpackPlugin({
+        //   template: "./public/index.html",
+        // }),
         new MiniCssExtractPlugin()
       ]
 })
