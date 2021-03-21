@@ -1,8 +1,11 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin")
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+const TerserJSPlugin = require("terser-webpack-plugin")
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin")
 
 const path = require('path');
-module.exports = {
+module.exports = env => ({
+      mode: env.development ? "development" : "production",
       entry: "./src/index.js",
       output: {
         path: __dirname + "/public",
@@ -12,6 +15,9 @@ module.exports = {
       devServer: {
         contentBase: "./dist",
         port: "3001",
+      },
+      optimization: {
+        minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
       },
       resolve: {
         extensions: [".jsx", ".js", "json"],
@@ -39,4 +45,4 @@ module.exports = {
         }),
         new MiniCssExtractPlugin()
       ]
-}
+})
