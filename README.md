@@ -35,6 +35,8 @@ to package.json. Instead, add:
 
     "start": "webpack serve"
 
+In this video I also didn't add typescript features.
+
 In https://thedeployguy.com/2020-06-14-adding-typescript-to-web/ I also had to add another plugin:
 
       plugins: [
