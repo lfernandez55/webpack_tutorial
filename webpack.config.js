@@ -9,6 +9,10 @@ module.exports = {
         publicPath: "/",
         filename: "[name].bundle.js",
       },
+      devServer: {
+        contentBase: "./dist",
+        port: "3001",
+      },
       resolve: {
         extensions: [".jsx", ".js", "json"],
       },
